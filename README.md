@@ -1,6 +1,6 @@
 ## react app
 
-### 一个做好了各种前置设置的现代化的 react app
+### An all-in-one react app starter template
 - pnpm
 - eslint
 - prettier
