@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext } from 'react'
 import { tasks as initialTasks } from '../data/tasks'
 import { TTask, TTaskActionType } from '../types'
+import { useImmerReducer } from 'use-immer'
+import { Draft } from 'immer'
 
 const TasksContext = createContext<TTask[]>([])
 const TasksDispatchContext = createContext<React.Dispatch<TTaskActionType> | null>(null)
@@ -14,7 +16,7 @@ export function useTasksDispatch() {
 }
 
 export function TasksProvider({ children }: { children: React.ReactNode }) {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks)
+  const [tasks, dispatch] = useImmerReducer(tasksReducer, initialTasks)
 
   return (
     <TasksContext.Provider value={tasks}>
@@ -23,29 +25,29 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
-function tasksReducer(tasks: TTask[], action: TTaskActionType) {
+function tasksReducer(draft: Draft<TTask[]>, action: TTaskActionType): void {
   switch (action.type) {
     case 'added': {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ]
+      draft.push({
+        id: action.id,
+        text: action.text,
+        done: false,
+      })
+      break
     }
     case 'changed': {
-      return tasks.map((t) => {
-        if (t.id === action.task.id) {
-          return action.task
-        } else {
-          return t
-        }
-      })
+      const index = draft.findIndex((d) => d.id === action.task.id)
+      if (index >= 0) {
+        draft[index] = action.task
+      }
+      break
     }
     case 'deleted': {
-      return tasks.filter((t) => t.id !== action.id)
+      const index = draft.findIndex((d) => d.id === action.id)
+      if (index >= 0) {
+        draft.splice(index, 1)
+      }
+      break
     }
     default: {
       throw Error('Unknown action')
