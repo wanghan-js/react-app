@@ -22,7 +22,10 @@ module.exports = {
         "camelcase": "error",
         "spaced-comment": "error",
         "quotes": ["error", "single"],
-        "no-duplicate-imports": "error"
+        "no-duplicate-imports": "error",
+        "no-restricted-imports": [
+            "error", { "patterns": ["@/features/*/*"] }
+        ]
     },
     "settings": {
         "import/resolver": {

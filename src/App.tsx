@@ -1,11 +1,5 @@
-import { FilterableProductTable } from './components/FilterableProductTable'
-
 function App() {
-  return (
-    <div>
-      <FilterableProductTable />
-    </div>
-  )
+  return <div>Hello React!</div>
 }
 
 export default App
