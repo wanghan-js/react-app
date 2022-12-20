@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import * as dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ErrorPage from './pages/ErrorPage'
-import Playground from './pages/Playground'
-import Home from './pages/Home'
+
+import './index.css'
+
+import { App } from '@/App'
+import { Algorithm } from '@/pages/Algorithm'
+import { ErrorPage } from '@/pages/ErrorPage'
+import { Home } from '@/pages/Home'
+import { Playground } from '@/pages/Playground'
 
 dayjs.locale('zh-cn')
 
@@ -28,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'playground',
         element: <Playground />,
+      },
+      {
+        path: 'algorithm',
+        element: <Algorithm />,
       },
     ],
   },

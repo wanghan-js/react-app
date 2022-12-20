@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 
-function App() {
+export function App() {
   return (
     <>
       <div className={'bg-amber-100 p-4 text-center text-5xl font-bold'}>Hello React!</div>
@@ -13,6 +13,9 @@ function App() {
           <li className={'rounded border border-purple-400 p-1.5'}>
             <Link to={'playground'}>Playground</Link>
           </li>
+          <li className={'rounded border border-purple-400 p-1.5'}>
+            <Link to={'algorithm'}>Algorithm</Link>
+          </li>
         </ul>
       </nav>
 
@@ -20,5 +23,3 @@ function App() {
     </>
   )
 }
-
-export default App
