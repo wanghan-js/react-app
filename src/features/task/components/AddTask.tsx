@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTasksDispatch } from '../context/TasksContext'
 import { getNextId } from '../data/tasks'
-import { TTaskActionType } from '@features/task/types'
+import { TTaskActionType } from '../types'
 
 export default function AddTask() {
   const [text, setText] = useState('')
