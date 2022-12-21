@@ -1,10 +1,13 @@
-import { sortArrayDistanceLessThanK } from '@/algorithm/heap/sortArrayDistanceLessThanK'
+import { Trie } from '@/algorithm/trie'
 
 export function Algorithm() {
-  const input = [2, 4, 1, 3, 5, 7, 6, 9, 8]
+  const input = ['abc', 'abcde', 'def', 'abcd', 'bcde', 'abcdefes', 'a', 'b', 'bc']
   const inputDisplay = input.slice().join(', ')
-  sortArrayDistanceLessThanK(input, 2)
-  const output = input.join(', ')
+  const trie = new Trie()
+  for (const word of input) {
+    trie.insert(word)
+  }
+  const output = trie.toString()
 
   return (
     <div className={'p-4'}>

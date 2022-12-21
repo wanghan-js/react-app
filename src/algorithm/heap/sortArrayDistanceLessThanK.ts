@@ -13,13 +13,13 @@ export function sortArrayDistanceLessThanK(xs: number[], k: number): void {
   // 从 k + 1 个元素开始遍历, 每次从小顶堆中取出最小元素放入原数组中, 并且再加入新增的元素
   let index = 0
   for (let i = k + 1; i < xs.length; i++, index++) {
-    xs[index] = heap.poll()
-    heap.add(xs[i])
+    xs[index] = heap.pop()
+    heap.push(xs[i])
   }
 
   // 最后的小顶堆, 需要依次弹出最小值, 放入原数组中
   while (!heap.isEmpty()) {
-    xs[index] = heap.poll()
+    xs[index] = heap.pop()
     index++
   }
 }

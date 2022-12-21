@@ -31,18 +31,18 @@
  */
 export function carPooling(trips: number[][], capacity: number): boolean {
   // 差分数组
-  const diff: number[] = new Array(1001).fill(0);
-  const len = trips.length;
+  const diff: number[] = new Array(1001).fill(0)
+  const len = trips.length
   for (let i = 0; i < len; i++) {
-    const [num, from, to] = trips[i];
-    diff[from] += num;
+    const [num, from, to] = trips[i]
+    diff[from] += num
     if (to < diff.length) {
-      diff[to] -= num;
+      diff[to] -= num
     }
   }
-  const res: number[] = [diff[0]];
+  const res: number[] = [diff[0]]
   for (let i = 1; i < diff.length; i++) {
-    res[i] = res[i - 1] + diff[i];
+    res[i] = res[i - 1] + diff[i]
   }
-  return Math.max(...res) <= capacity;
+  return Math.max(...res) <= capacity
 }

@@ -5,38 +5,29 @@ import { swap } from '@/algorithm/utils'
  */
 export class LittleHeap<T> {
   constructor(private array: T[]) {
-    for (let i = this.size() - 1; i >= 0; i--) {
-      this.heapify(i)
+    // 注意这里从最后一个元素开始调用 sink 方法, 可以将时间复杂度降低为 O(N)
+    // 而如果从第一个元素开始遍历的话, 时间复杂度为 O(N*logN)
+    for (let i = this.lastIndex(); i >= 0; i--) {
+      this.sink(i)
     }
   }
 
   // 添加一个元素到小顶堆
-  add(item: T): void {
+  push(item: T): void {
     this.array.push(item)
-    let j = this.array.length - 1
-    while (j) {
-      // 父节点的下标
-      const k = Math.floor((j - 1) / 2)
-      if (this.array[j] < this.array[k]) {
-        // 比父小就交换位置
-        swap(this.array, j, k)
-        j = k
-      } else {
-        break
-      }
-    }
+    this.rise(this.lastIndex())
   }
 
   // 从小顶堆中弹出最小值
-  poll(): T {
+  pop(): T {
     if (this.isEmpty()) {
       throw new Error('Little heap already empty!')
     }
     const min = this.array[0]
-    swap(this.array, 0, this.size() - 1)
+    swap(this.array, 0, this.lastIndex())
     // 交换后丢掉最后一个元素 (也是最小的元素)
     this.array.pop()
-    this.heapify(0)
+    this.sink(0)
     return min
   }
 
@@ -52,7 +43,28 @@ export class LittleHeap<T> {
     return this.array.join(', ')
   }
 
-  private heapify(index: number): void {
+  private lastIndex(): number {
+    return this.size() - 1
+  }
+
+  // 节点上浮
+  private rise(index: number): void {
+    let i = index
+    while (i) {
+      // 父节点的下标
+      const j = Math.floor((i - 1) / 2)
+      if (this.array[i] < this.array[j]) {
+        // 比父小就交换位置
+        swap(this.array, i, j)
+        i = j
+      } else {
+        break
+      }
+    }
+  }
+
+  // 节点下沉
+  private sink(index: number): void {
     let i = index
     let leftIndex = i * 2 + 1
     while (leftIndex < this.size()) {
