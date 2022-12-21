@@ -12,6 +12,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.20.4",
     "@types/node": "^18.11.17",
     "dayjs": "^1.11.7",
     "immer": "^9.0.16",

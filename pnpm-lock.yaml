@@ -4,6 +4,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/line-clamp': ^0.4.2
   '@tailwindcss/typography': ^0.5.8
+  '@tanstack/react-query': ^4.20.4
   '@types/node': ^18.11.17
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
@@ -32,6 +33,7 @@ specifiers:
   vite: ^3.2.3
 
 dependencies:
+  '@tanstack/react-query': 4.20.4_biqbaboplfbrettd7655fr4n2y
   '@types/node': 18.11.17
   dayjs: 1.11.7
   immer: 9.0.16
@@ -492,6 +494,28 @@ packages:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.2.4_postcss@8.4.19
     dev: true
+
+  /@tanstack/query-core/4.20.4:
+    resolution: {integrity: sha512-lhLtGVNJDsJ/DyZXrLzekDEywQqRVykgBqTmkv0La32a/RleILXy6JMLBb7UmS3QCatg/F/0N9/5b0i5j6IKcA==}
+    dev: false
+
+  /@tanstack/react-query/4.20.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-SJRxx13k/csb9lXAJfycgVA1N/yU/h3bvRNWP0+aHMfMjmbyX82FdoAcckDBbOdEyAupvb0byelNHNeypCFSyA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.20.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -2854,6 +2878,14 @@ packages:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
       immer: 9.0.16
+      react: 18.2.0
+    dev: false
+
+  /use-sync-external-store/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
       react: 18.2.0
     dev: false
 
