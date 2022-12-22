@@ -11,6 +11,7 @@ import { Algorithm } from '@/pages/Algorithm'
 import { ErrorPage } from '@/pages/ErrorPage'
 import { Home } from '@/pages/Home'
 import { Playground } from '@/pages/Playground'
+import { TodoPage } from '@/pages/TodoPage'
 
 dayjs.locale('zh-cn')
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         element: <Algorithm />,
       },
     ],
+  },
+  {
+    path: '/todo',
+    element: <TodoPage />,
   },
 ])
 

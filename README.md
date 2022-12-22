@@ -4,7 +4,7 @@
 - pnpm
 - eslint
 - prettier
-- tailwindcss
+- chakra-ui
 - typescript
 - vite
 
