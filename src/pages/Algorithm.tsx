@@ -1,13 +1,10 @@
-import { Trie } from '@/algorithm/trie'
+import { cardinalSort } from '@/algorithm/桶排序/cardinalSort'
 
 export function Algorithm() {
-  const input = ['abc', 'abcde', 'def', 'abcd', 'bcde', 'abcdefes', 'a', 'b', 'bc']
+  const input = [100, 36, 983, 228, 83, 9, 381]
   const inputDisplay = input.slice().join(', ')
-  const trie = new Trie()
-  for (const word of input) {
-    trie.insert(word)
-  }
-  const output = trie.toString()
+  cardinalSort(input)
+  const output = input.join(', ')
 
   return (
     <div className={'p-4'}>
