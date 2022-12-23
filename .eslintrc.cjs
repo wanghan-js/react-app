@@ -7,6 +7,7 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
         "prettier"
     ],
     "overrides": [
@@ -25,6 +26,9 @@ module.exports = {
         "no-duplicate-imports": "error",
     },
     "settings": {
+        "react": {
+            "version": "detect"
+        },
         "import/resolver": {
             "typescript": {}
         }

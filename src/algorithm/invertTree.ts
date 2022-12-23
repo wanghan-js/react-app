@@ -30,24 +30,24 @@
  * 树中节点数目范围在 [0, 100] 内
  * -100 <= Node.val <= 100
  */
-import type { TreeNode } from "@/leet-code/treeNode";
+import { TreeNode } from '@/algorithm/treeNode'
 
 export function invertTree(root: TreeNode | null): TreeNode | null {
   if (!root) {
-    return null;
+    return null
   }
 
-  const queue: (TreeNode | null)[] = [root];
+  const queue: (TreeNode | null)[] = [root]
   while (queue.length) {
-    const node = queue.shift();
+    const node = queue.shift()
     if (!node) {
-      continue;
+      continue
     }
-    const temp = node.right;
-    node.right = node.left;
-    node.left = temp;
-    queue.push(node.right);
-    queue.push(node.left);
+    const temp = node.right
+    node.right = node.left
+    node.left = temp
+    queue.push(node.right)
+    queue.push(node.left)
   }
-  return root;
+  return root
 }

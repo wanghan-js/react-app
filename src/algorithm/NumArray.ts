@@ -34,18 +34,18 @@
  * 0 <= i <= j < nums.length
  * 最多调用 104 次 sumRange 方法
  */
-class NumArray {
+export class NumArray {
   // 前缀和数组
-  private preSums: number[] = [0];
+  private preSums: number[] = [0]
 
   constructor(private nums: number[]) {
     for (let i = 1; i < nums.length + 1; i++) {
-      this.preSums.push(this.preSums[i - 1] + nums[i - 1]);
+      this.preSums.push(this.preSums[i - 1] + nums[i - 1])
     }
   }
 
   sumRange(left: number, right: number): number {
-    return this.preSums[right + 1] - this.preSums[left];
+    return this.preSums[right + 1] - this.preSums[left]
   }
 }
 

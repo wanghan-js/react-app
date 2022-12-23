@@ -34,31 +34,31 @@
  */
 export function coinChange(coins: number[], amount: number): number {
   // 加备忘录, 避免重复计算
-  const memo: Map<number, number> = new Map();
+  const memo: Map<number, number> = new Map()
 
   function dp(coins: number[], amount: number): number {
     if (amount === 0) {
-      return 0;
+      return 0
     }
     if (amount < 0) {
-      return -1;
+      return -1
     }
     if (memo.get(amount)) {
-      return memo.get(amount) as number;
+      return memo.get(amount) as number
     }
 
-    let res = Number.MAX_SAFE_INTEGER;
+    let res = Number.MAX_SAFE_INTEGER
     for (const coin of coins) {
-      const count = dp(coins, amount - coin);
+      const count = dp(coins, amount - coin)
       if (count === -1) {
-        continue;
+        continue
       }
-      res = Math.min(res, count + 1);
+      res = Math.min(res, count + 1)
     }
-    res = res === Number.MAX_SAFE_INTEGER ? -1 : res;
-    memo.set(amount, res);
-    return res;
+    res = res === Number.MAX_SAFE_INTEGER ? -1 : res
+    memo.set(amount, res)
+    return res
   }
 
-  return dp(coins, amount);
+  return dp(coins, amount)
 }

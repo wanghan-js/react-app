@@ -37,41 +37,41 @@
  * -1000 <= Node.val <= 1000
  * -1000 <= targetSum <= 1000
  */
-import type { TreeNode } from "@/leet-code/treeNode";
+import { TreeNode } from '@/algorithm/treeNode'
 
 export function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (!root) {
-    return false;
+    return false
   }
 
-  const queueNode = [root];
-  const queueSum = [root.val];
+  const queueNode = [root]
+  const queueSum = [root.val]
 
   // 广度优先搜索 BFS
   while (queueNode.length) {
-    const nowNode = queueNode.shift() as TreeNode;
-    const nowSum = queueSum.shift() as number;
-    console.log(nowNode, nowSum);
+    const nowNode = queueNode.shift() as TreeNode
+    const nowSum = queueSum.shift() as number
+    console.log(nowNode, nowSum)
     if (!nowNode.left && !nowNode.right) {
       // 说明当前节点是叶子节点, 这是看队列中的总和是否等于目标和
       if (nowSum === targetSum) {
-        return true;
+        return true
       } else {
-        continue;
+        continue
       }
     }
 
     // 更新节点队列和总和队列
-    const leftNode = nowNode.left;
-    const rightNode = nowNode.right;
+    const leftNode = nowNode.left
+    const rightNode = nowNode.right
     if (leftNode) {
-      queueNode.push(leftNode);
-      queueSum.push(nowSum + leftNode.val);
+      queueNode.push(leftNode)
+      queueSum.push(nowSum + leftNode.val)
     }
     if (rightNode) {
-      queueNode.push(rightNode);
-      queueSum.push(nowSum + rightNode.val);
+      queueNode.push(rightNode)
+      queueSum.push(nowSum + rightNode.val)
     }
   }
-  return false;
+  return false
 }

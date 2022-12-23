@@ -14,50 +14,50 @@ export function drink(money: number, bottleCount: number): number {
   function bottle(count: number): number {
     // 如果剩 0 个或 1 个空瓶, 则不能借, 因为借 2 个或 3 个空瓶, 最后也还不上
     if (count <= bottleCount - 2) {
-      return 0;
+      return 0
     }
     // 如果剩 2 个空瓶, 则可以借, 因为借 1 个空瓶, 换一瓶饮料, 喝完后刚好可以还 1 个空瓶
     if (count === bottleCount - 1) {
-      return 1;
+      return 1
     }
 
-    const n = Math.floor(count / bottleCount);
-    const r = count % bottleCount;
-    return n + bottle(n + r);
+    const n = Math.floor(count / bottleCount)
+    const r = count % bottleCount
+    return n + bottle(n + r)
   }
 
-  return money + bottle(money);
+  return money + bottle(money)
 }
 
 type Tree = {
-  id: number;
-  name: string;
-  pid: number;
-  children: Tree[];
-};
+  id: number
+  name: string
+  pid: number
+  children: Tree[]
+}
 
-type Node = Omit<Tree, "children">;
-export function arrToTree(arr: Node[], pid: number): Tree[] {
-  const res: Tree[] = [];
+type Node = Omit<Tree, 'children'>
+export function arrToTree(arr: Node[]): Tree[] {
+  const res: Tree[] = []
 
-  const map = new Map<number, Tree>();
+  const map = new Map<number, Tree>()
   for (const item of arr) {
     map.set(item.id, {
       ...item,
       children: [],
-    });
+    })
   }
 
   for (const item of arr) {
-    const { id, pid } = item;
-    const node = map.get(id) as Tree;
+    const { id, pid } = item
+    const node = map.get(id) as Tree
     if (pid === 0) {
-      res.push(node);
+      res.push(node)
     } else {
-      const parentNode = map.get(pid) as Tree;
-      parentNode.children.push(node);
+      const parentNode = map.get(pid) as Tree
+      parentNode.children.push(node)
     }
   }
 
-  return res;
+  return res
 }

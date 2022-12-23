@@ -35,21 +35,21 @@
  * 0 <= prices[i] <= 104
  */
 export function maxProfitMedium(prices: number[]): number {
-  const len = prices.length;
+  const len = prices.length
   if (len <= 1) {
-    return 0;
+    return 0
   }
 
-  let profit = 0;
+  let profit = 0
 
   for (let i = 0; i < len - 1; i++) {
-    const currentPrice = prices[i];
-    const nextPrice = prices[i + 1];
+    const currentPrice = prices[i]
+    const nextPrice = prices[i + 1]
     if (nextPrice > currentPrice) {
       // 有利可图, 执行交易
-      profit += nextPrice - currentPrice;
+      profit += nextPrice - currentPrice
     }
   }
 
-  return profit;
+  return profit
 }

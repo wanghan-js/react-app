@@ -32,22 +32,22 @@
  */
 export function lengthOfLongestSubstring(s: string): number {
   if (!s) {
-    return 0;
+    return 0
   }
-  const dp = [s[0]];
-  let max: number = 1;
+  const dp = [s[0]]
+  let max = 1
   for (let i = 1; i < s.length; i++) {
-    const ch = s[i];
-    const lastDp = dp[i - 1];
-    const index = lastDp.indexOf(ch);
+    const ch = s[i]
+    const lastDp = dp[i - 1]
+    const index = lastDp.indexOf(ch)
     if (index >= 0) {
-      dp[i] = lastDp.slice(index + 1) + ch;
+      dp[i] = lastDp.slice(index + 1) + ch
     } else {
-      dp[i] = dp[i - 1] + ch;
+      dp[i] = dp[i - 1] + ch
     }
-    max = Math.max(max, dp[i].length);
+    max = Math.max(max, dp[i].length)
   }
-  return max;
+  return max
 }
 
 // 滑动窗口解法

@@ -34,44 +34,44 @@
  *
  * 你可以优化你的算法到 O(rowIndex) 空间复杂度吗？
  */
-function getRow(rowIndex: number): number[] {
+export function getRow(rowIndex: number): number[] {
   // 直接构造出目标行
-  const row = new Array(rowIndex + 1).fill(0);
+  const row = new Array(rowIndex + 1).fill(0)
   // 第一个元素固定为 1
-  row[0] = 1;
+  row[0] = 1
 
   for (let i = 1; i <= rowIndex; i += 1) {
     for (let j = i; j > 0; j -= 1) {
-      row[j] += row[j - 1];
+      row[j] += row[j - 1]
     }
   }
 
-  return row;
+  return row
 }
 
 // xs: [5, 4, 3, 7, 8]
-function localMin(xs) {
-  let lo = 0;
-  let hi = xs.length - 1;
-  let mid = -1;
+export function localMin(xs: number[]) {
+  let lo = 0
+  let hi = xs.length - 1
+  let mid = -1
   while (lo <= hi && mid !== lo && mid !== hi) {
     if (xs[lo] < xs[lo + 1]) {
-      return lo;
+      return lo
     } else if (xs[hi] < xs[hi - 1]) {
-      return hi;
+      return hi
     } else {
-      mid = lo + ((hi - lo) >> 1);
-      const num = xs[mid];
-      const left = xs[mid - 1];
-      const right = xs[mid + 1];
+      mid = lo + ((hi - lo) >> 1)
+      const num = xs[mid]
+      const left = xs[mid - 1]
+      const right = xs[mid + 1]
       if (num < left && num < right) {
-        return mid;
+        return mid
       } else if (num >= left) {
-        hi = mid;
+        hi = mid
       } else {
-        lo = mid;
+        lo = mid
       }
     }
   }
-  return -1;
+  return -1
 }

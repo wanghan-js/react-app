@@ -42,15 +42,15 @@
  *
  * 注意：本题与主站 226 题相同：https://leetcode-cn.com/problems/invert-binary-tree/
  */
-import type { TreeNode } from "@/leet-code/treeNode";
+import { TreeNode } from '@/algorithm/treeNode'
 
 export function mirrorTree(root: TreeNode | null): TreeNode | null {
   if (!root) {
-    return null;
+    return null
   }
-  const left = mirrorTree(root.left);
-  const right = mirrorTree(root.right);
-  root.left = right;
-  root.right = left;
-  return root;
+  const left = mirrorTree(root.left)
+  const right = mirrorTree(root.right)
+  root.left = right
+  root.right = left
+  return root
 }

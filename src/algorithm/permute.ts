@@ -28,29 +28,29 @@
  * nums 中的所有整数 互不相同
  */
 export function permute(nums: number[]): number[][] {
-  const res: number[][] = [];
-  const track: number[] = [];
+  const res: number[][] = []
+  const track: number[] = []
 
   // 回溯函数, 递归调用
   function backtrack() {
     // 没有可选的数字了, 所有已选的数字构成一个路径, push 到返回值中
     if (track.length === nums.length) {
-      res.push(track.slice());
-      return;
+      res.push(track.slice())
+      return
     }
 
     for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
+      const num = nums[i]
       if (track.includes(num)) {
-        continue;
+        continue
       }
-      track.push(num);
-      backtrack();
-      track.pop();
+      track.push(num)
+      backtrack()
+      track.pop()
     }
   }
 
-  backtrack();
+  backtrack()
 
-  return res;
+  return res
 }

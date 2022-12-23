@@ -45,57 +45,57 @@
 export function threeSum(nums: number[]): number[][] {
   // 特殊判定, 如果数组长度小于 3, 则不可能有解, 直接返回空数组
   if (nums.length < 3) {
-    return [];
+    return []
   }
 
   // 先对数组排序
-  nums.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b)
 
-  const result: number[][] = [];
+  const result: number[][] = []
 
-  const count = nums.length;
+  const count = nums.length
   for (let i = 0; i < count; i += 1) {
-    const num = nums[i];
+    const num = nums[i]
     if (num > 0) {
       // 如果 num 大于 0, 则后面的元素都大于 0, 没有继续遍历的必要了
-      return result;
+      return result
     }
     if (i > 0 && num === nums[i - 1]) {
       // 当前遍历的元素跟上一个元素一样, 这时需要跳过, 避免出现重复解
       // 因为如果值一样的话, 后面发生的一切都会一样, 这样就会出现重复解
-      continue;
+      continue
     }
 
     // 左右双指针
-    let l = i + 1;
-    let r = count - 1;
+    let l = i + 1
+    let r = count - 1
 
     while (l < r) {
       if (num + nums[l] + nums[r] === 0) {
         // 找到一组, 更新结果
-        result.push([num, nums[l], nums[r]]);
+        result.push([num, nums[l], nums[r]])
         // 然后更新左右指针
         while (l < r && nums[l] === nums[l + 1]) {
           // 当左值跟它下一个元素值一样时, 需要跳过, 避免出现重复解
-          l += 1;
+          l += 1
         }
         while (l < r && nums[r] === nums[r - 1]) {
           // 当右值跟它下一个元素值一样时, 需要跳过, 避免出现重复解
-          r -= 1;
+          r -= 1
         }
         // 这时需要把 l 和 r 更新到他们下一个不重复的位置上
-        l += 1;
-        r -= 1;
+        l += 1
+        r -= 1
         // 在这里可以确保左值和右值都跟他们上一次的值不一样
       } else if (num + nums[l] + nums[r] > 0) {
         // 三数之和大于 0, 说明右值太大, 需要将右指针左移
-        r -= 1;
+        r -= 1
       } else {
         // 三数之和小于 0, 说明左值太小, 需要将左指针右移
-        l += 1;
+        l += 1
       }
     }
   }
 
-  return result;
+  return result
 }

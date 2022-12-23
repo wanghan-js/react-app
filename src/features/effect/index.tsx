@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import dayjs from 'dayjs'
 
 function Playground() {
   const [text, setText] = useState('a')
@@ -15,7 +14,7 @@ function Playground() {
       console.log('🟡 Cancel "' + text + '" log')
       window.clearTimeout(timeoutId)
     }
-  }, [text])
+  })
 
   return (
     <>

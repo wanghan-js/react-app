@@ -28,38 +28,35 @@
  * -100 <= Node.val <= 100
  * l1 和 l2 均按 非递减顺序 排列
  */
-import { ListNode } from "@/leet-code/listNode";
+import { ListNode } from '@/algorithm/listNode'
 
-export function mergeTwoLists(
-  list1: ListNode | null,
-  list2: ListNode | null
-): ListNode | null {
+export function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
   if (!list1) {
-    return list2;
+    return list2
   }
   if (!list2) {
-    return list1;
+    return list1
   }
   // 两个链表都不为空
-  const list: ListNode | null = new ListNode(0);
-  let l = list;
-  let p: ListNode | null = list1;
-  let q: ListNode | null = list2;
+  const list: ListNode | null = new ListNode(0)
+  let l = list
+  let p: ListNode | null = list1
+  let q: ListNode | null = list2
   while (p && q) {
     if (p.val > q.val) {
-      l.next = q;
-      q = q.next;
+      l.next = q
+      q = q.next
     } else {
-      l.next = p;
-      p = p.next;
+      l.next = p
+      p = p.next
     }
-    l = l.next;
+    l = l.next
   }
   if (!p) {
-    l.next = q;
+    l.next = q
   }
   if (!q) {
-    l.next = p;
+    l.next = p
   }
-  return list.next;
+  return list.next
 }

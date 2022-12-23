@@ -25,29 +25,19 @@
  * 进行了操作 [0,2,-2] 后的状态:
  * [-2,0,3,5,3]
  */
-export function getModifiedArray(
-  length: number,
-  updates: number[][]
-): number[] {
+export function getModifiedArray(length: number, updates: number[][]): number[] {
   // 首先初始化数组, 初始化数组跟差分数组一样, 这里就直接把初始化数组当做差分数组使用
-  const arr = new Array(length).fill(0);
+  const arr = new Array(length).fill(0)
   for (const update of updates) {
-    const [i, j, inc] = update;
-    arr[i] += inc;
+    const [i, j, inc] = update
+    arr[i] += inc
     if (j + 1 < arr.length) {
-      arr[j + 1] -= inc;
+      arr[j + 1] -= inc
     }
   }
-  const res = [arr[0]];
+  const res = [arr[0]]
   for (let i = 1; i < length; i++) {
-    res[i] = res[i - 1] + arr[i];
+    res[i] = res[i - 1] + arr[i]
   }
-  return res;
+  return res
 }
-
-interface A {
-  b: string;
-}
-const o = { b: "c" };
-type C = typeof o.b;
-const x: C = 2;

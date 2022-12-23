@@ -33,4 +33,20 @@
  * 0 <= height[i] <= 104
  * @param height
  */
-function maxArea(height: number[]): number {}
+export function maxArea(height: number[]): number {
+  let max = 0
+  let i = 0
+  let j = height.length - 1
+  // 首尾双指针向中间靠拢
+  while (i !== j) {
+    // 更新最大容量
+    max = Math.max(max, (j - i) * Math.min(height[i], height[j]))
+    // 更新 i 和 j 的值: 移动值较小的那个指针, 因为这样才有可能找到较大的面积
+    if (height[i] <= height[j]) {
+      i++
+    } else {
+      j--
+    }
+  }
+  return max
+}

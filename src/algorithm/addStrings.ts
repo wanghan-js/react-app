@@ -32,38 +32,38 @@
  * num1 和num2 都不包含任何前导零
  */
 export function addStrings(num1: string, num2: string): string {
-  let result = "";
-  let carry = 0;
+  let result = ''
+  let carry = 0
 
   // 先将两个字符串变成同样的长度
-  const l1 = num1.length;
-  const l2 = num2.length;
-  const maxL = Math.max(l1, l2);
-  const n1 = "0".repeat(maxL - l1) + num1;
-  const n2 = "0".repeat(maxL - l2) + num2;
+  const l1 = num1.length
+  const l2 = num2.length
+  const maxL = Math.max(l1, l2)
+  const n1 = '0'.repeat(maxL - l1) + num1
+  const n2 = '0'.repeat(maxL - l2) + num2
 
   for (let i = maxL - 1; i >= 0; i--) {
-    const a = Number(n1[i]);
-    const b = Number(n2[i]);
-    const sum = a + b + carry;
-    result = (sum % 10) + result;
+    const a = Number(n1[i])
+    const b = Number(n2[i])
+    const sum = a + b + carry
+    result = (sum % 10) + result
     if (sum >= 10) {
-      carry = 1;
+      carry = 1
     } else {
-      carry = 0;
+      carry = 0
     }
   }
 
   if (carry) {
-    result = carry + result;
+    result = carry + result
   }
 
-  return result;
+  return result
 }
 
-const a = await new Promise((resolve, reject) => {
+const a = await new Promise((resolve) => {
   setTimeout(() => {
-    resolve(2);
-  }, 2000);
-});
-console.log(a);
+    resolve(2)
+  }, 2000)
+})
+console.log(a)

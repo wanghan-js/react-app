@@ -30,27 +30,27 @@
 export function maxProfit(prices: number[]): number {
   // 特殊判断, 数组长度在 1 或 1 以下时, 无法执行卖出, 获取不到利润, 直接返回 0
   if (prices.length <= 1) {
-    return 0;
+    return 0
   }
 
   // 记录最低价格
-  let priceMin = prices[0];
+  let priceMin = prices[0]
   // 记录最大利润
-  let profitMax = 0;
+  let profitMax = 0
 
   for (let i = 1; i < prices.length; i++) {
-    const price = prices[i];
+    const price = prices[i]
     // 更新最低价格
     if (priceMin > price) {
-      priceMin = price;
+      priceMin = price
     }
     // 计算当次利润
-    const profit = price - priceMin;
+    const profit = price - priceMin
     // 更新最大利润
     if (profitMax < profit) {
-      profitMax = profit;
+      profitMax = profit
     }
   }
 
-  return profitMax;
+  return profitMax
 }

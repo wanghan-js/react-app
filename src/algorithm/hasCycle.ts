@@ -43,27 +43,27 @@
  *
  * 进阶：你能用 O(1)（即，常量）内存解决此问题吗？
  */
-import type { ListNode } from "@/leet-code/listNode";
+import { ListNode } from '@/algorithm/listNode'
 
 export function hasCycle(head: ListNode | null): boolean {
   // 空节点, 或者只有 1 个节点, 不可能构成环, 直接返回 false
   if (!head || !head.next) {
-    return false;
+    return false
   }
 
   // 快慢指针
-  let p: ListNode | null = head;
-  let q: ListNode | null = head.next;
+  let p: ListNode | null = head
+  let q: ListNode | null = head.next
 
   while (p !== q) {
     if (!q || !q.next) {
       // 说明快指针跑到链表末尾了, 不可能有环
-      return false;
+      return false
     }
-    p = (p as ListNode).next;
-    q = q.next.next;
+    p = (p as ListNode).next
+    q = q.next.next
   }
 
   // 节点遍历完了也没相遇, 说明没有环
-  return true;
+  return true
 }

@@ -33,23 +33,23 @@
  * 进阶: 如果多次调用这个函数，你将如何优化你的算法？
  */
 export function reverseBits(n: number): number {
-  let num = Number(n);
-  const stack: number[] = [];
+  let num = Number(n)
+  const stack: number[] = []
   while (num > 0) {
-    const remainder = num % 2;
-    stack.push(remainder);
-    num = Math.floor(num / 2);
+    const remainder = num % 2
+    stack.push(remainder)
+    num = Math.floor(num / 2)
   }
 
   // 一共有 32 位, 需要补 0
   while (stack.length < 32) {
-    stack.push(0);
+    stack.push(0)
   }
 
-  let res = 0;
+  let res = 0
   while (stack.length > 0) {
-    const bit = stack.shift() as number;
-    res += bit * Math.pow(2, stack.length);
+    const bit = stack.shift() as number
+    res += bit * Math.pow(2, stack.length)
   }
-  return res;
+  return res
 }

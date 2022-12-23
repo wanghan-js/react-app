@@ -26,8 +26,8 @@
  */
 export function lastRemaining(n: number, m: number): number {
   if (n === 1) {
-    return 0;
+    return 0
   }
-  const x = lastRemaining(n - 1, m);
-  return (m + x) % n;
+  const x = lastRemaining(n - 1, m)
+  return (m + x) % n
 }

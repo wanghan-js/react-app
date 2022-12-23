@@ -33,27 +33,27 @@
  * -231 <= x <= 231 - 1
  */
 export function reverse(x: number): number {
-  let n = Math.abs(x);
+  let n = Math.abs(x)
 
-  const queue = [];
+  const queue = []
   while (n) {
-    queue.push(n % 10);
-    n = Math.floor(n / 10);
+    queue.push(n % 10)
+    n = Math.floor(n / 10)
   }
 
-  let sum = 0;
+  let sum = 0
   while (queue.length > 0) {
-    const n = queue.shift() as number;
-    sum += n * Math.pow(10, queue.length);
+    const n = queue.shift() as number
+    sum += n * Math.pow(10, queue.length)
   }
 
   if (sum > Math.pow(2, 31) - 1) {
-    return 0;
+    return 0
   } else {
     if (x < 0) {
-      return -sum;
+      return -sum
     } else {
-      return sum;
+      return sum
     }
   }
 }

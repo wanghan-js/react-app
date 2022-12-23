@@ -24,25 +24,25 @@
  * s 仅由数字和英文字母组成
  */
 export function longestPalindrome(s: string): string {
-  const len = s.length;
+  const len = s.length
   // 单个字符的串一定是回文串, 直接返回
   if (len === 1) {
-    return s;
+    return s
   }
 
   // 记录下最大回文子串的起始 index 和长度
-  let longestIndex = 0;
-  let longestLen = 1;
+  let longestIndex = 0
+  let longestLen = 1
 
   // 动态规划, 空间换时间
-  const dp: boolean[][] = [];
+  const dp: boolean[][] = []
 
   // 初始化 dp, dp 的状态表示为 从 left 到 right 下标内的子串是否为回文串
   for (let i = 0; i < len; i++) {
-    dp[i] = [];
+    dp[i] = []
     for (let j = 0; j < len; j++) {
       // 单个字符一定是回文, 否则初始化为 false
-      dp[i][j] = i === j;
+      dp[i][j] = i === j
     }
   }
 
@@ -55,19 +55,16 @@ export function longestPalindrome(s: string): string {
        * 如果相等, 则如果子串的长度为 2 或者 3, 那肯定是回文子串
        * 如果子串的长度大于 3, 则判断 dp 中保存的上一个维度的字段 (长度减 2) 是否是回文子串
        */
-      if (
-        s[left] === s[right] &&
-        (right - left <= 2 || dp[right - 1][left + 1])
-      ) {
-        dp[right][left] = true;
-        const len = right - left + 1;
+      if (s[left] === s[right] && (right - left <= 2 || dp[right - 1][left + 1])) {
+        dp[right][left] = true
+        const len = right - left + 1
         if (len > longestLen) {
-          longestLen = len;
-          longestIndex = left;
+          longestLen = len
+          longestIndex = left
         }
       }
     }
   }
 
-  return s.slice(longestIndex, longestIndex + longestLen);
+  return s.slice(longestIndex, longestIndex + longestLen)
 }

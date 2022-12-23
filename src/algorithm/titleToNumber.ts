@@ -38,22 +38,22 @@
  * columnTitle 在范围 ["A", "FXSHRXW"] 内
  */
 function codePointOf(ch: string): number {
-  return ch.codePointAt(0) as number;
+  return ch.codePointAt(0) as number
 }
 
 function sizeOf(ch: string): number {
-  return codePointOf(ch) - codePointOf("A") + 1;
+  return codePointOf(ch) - codePointOf('A') + 1
 }
 
 export function titleToNumber(columnTitle: string): number {
-  let size = 0;
+  let size = 0
 
   for (let i = 0; i < columnTitle.length; i += 1) {
-    const ch = columnTitle[i];
-    const n = sizeOf(ch);
-    const weight = columnTitle.length - i - 1;
-    size += Math.pow(sizeOf("Z"), weight) * n;
+    const ch = columnTitle[i]
+    const n = sizeOf(ch)
+    const weight = columnTitle.length - i - 1
+    size += Math.pow(sizeOf('Z'), weight) * n
   }
 
-  return size;
+  return size
 }

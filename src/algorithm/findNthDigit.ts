@@ -22,4 +22,6 @@
  *
  * 1 <= n <= 231 - 1
  */
-function findNthDigit(n: number): number {}
+export function findNthDigit(n: number): number {
+  return n
+}

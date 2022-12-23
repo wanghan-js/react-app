@@ -21,4 +21,6 @@
  *
  * 0 <= n <= 109
  */
-export function countDigitOne(n: number): number {}
+export function countDigitOne(n: number): number {
+  return n
+}

@@ -20,18 +20,18 @@
  */
 export function canAttendMeetings(intervals: number[][]): boolean {
   if (intervals.length <= 1) {
-    return true;
+    return true
   }
   // 先排序
-  intervals.sort((p1, p2) => p1[0] - p2[0]);
+  intervals.sort((p1, p2) => p1[0] - p2[0])
 
   for (let i = 0; i < intervals.length - 1; i++) {
-    const end = intervals[i][1];
-    const start = intervals[i + 1][0];
+    const end = intervals[i][1]
+    const start = intervals[i + 1][0]
     if (end > start) {
-      return false;
+      return false
     }
   }
 
-  return true;
+  return true
 }

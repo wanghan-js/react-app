@@ -33,22 +33,22 @@
 export function moveZeroes(nums: number[]): void {
   // 特殊判断
   if (nums.length < 2) {
-    return;
+    return
   }
   // 双指针: 一个指向首个 0 的下标; 另一个指向下一个非 0 的坐标
-  let p = nums.indexOf(0);
+  let p = nums.indexOf(0)
   if (p < 0) {
     // 说明数组中没有 0, 直接返回
-    return;
+    return
   }
   for (let q = p + 1; q < nums.length; q += 1) {
     if (nums[q] === 0) {
       // 跳过后面的 0
-      continue;
+      continue
     }
     // 交换 0 和非 0
-    nums[p] = nums[q];
-    nums[q] = 0;
-    p += 1;
+    nums[p] = nums[q]
+    nums[q] = 0
+    p += 1
   }
 }

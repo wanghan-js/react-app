@@ -27,34 +27,34 @@
  * -105 <= mat[i][j] <= 105
  */
 export function findDiagonalOrder(mat: number[][]): number[] {
-  const row = mat.length;
-  const column = mat[0].length;
-  const result = new Array(row * column).fill(0);
-  let position = 0;
+  const row = mat.length
+  const column = mat[0].length
+  const result = new Array(row * column).fill(0)
+  let position = 0
 
   for (let i = 0; i < row + column - 1; i++) {
     if (i & 1) {
       // 说明 i 是奇数, 从上往下遍历
-      let x = i < column ? 0 : i - column + 1;
-      let y = i < column ? i : column - 1;
+      let x = i < column ? 0 : i - column + 1
+      let y = i < column ? i : column - 1
       while (x < row && y >= 0) {
-        result[position] = mat[x][y];
-        position++;
-        x++;
-        y--;
+        result[position] = mat[x][y]
+        position++
+        x++
+        y--
       }
     } else {
       // 说明 i 是偶数, 从下往上遍历
-      let x = i < row ? i : row - 1;
-      let y = i < row ? 0 : i - row + 1;
+      let x = i < row ? i : row - 1
+      let y = i < row ? 0 : i - row + 1
       while (x >= 0 && y < column) {
-        result[position] = mat[x][y];
-        position++;
-        x--;
-        y++;
+        result[position] = mat[x][y]
+        position++
+        x--
+        y++
       }
     }
   }
 
-  return result;
+  return result
 }

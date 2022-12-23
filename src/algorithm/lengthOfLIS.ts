@@ -36,19 +36,19 @@
 export function lengthOfLIS(nums: number[]): number {
   // dp[i] 定义为: 以下标 i 对应的值所结尾的最长子序列的个数
   // 注意, 这个子序列的最后一位, 一定是 nums[i]
-  const dp: number[] = [1];
-  let max = 1;
+  const dp: number[] = [1]
+  let max = 1
 
   for (let i = 1; i < nums.length; i += 1) {
     // 初始化 为 1, 起码它自己算一个子序列
-    dp[i] = 1;
+    dp[i] = 1
     for (let j = 0; j < i; j += 1) {
       if (nums[i] > nums[j]) {
-        dp[i] = Math.max(dp[i], dp[j] + 1);
+        dp[i] = Math.max(dp[i], dp[j] + 1)
       }
     }
-    max = Math.max(max, dp[i]);
+    max = Math.max(max, dp[i])
   }
 
-  return max;
+  return max
 }

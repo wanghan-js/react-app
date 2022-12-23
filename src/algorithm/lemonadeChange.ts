@@ -42,43 +42,43 @@ export function lemonadeChange(bills: number[]): boolean {
   const changes = {
     5: 0,
     10: 0,
-  };
+  }
   for (let i = 0; i < bills.length; i++) {
-    const bill = bills[i];
+    const bill = bills[i]
     if (bill === 5) {
       // 把钱收入囊中, 无需找钱
-      changes[5] += 1;
+      changes[5] += 1
     } else if (bill === 10) {
       // 把钱收入囊中
-      changes[10] += 1;
+      changes[10] += 1
       // 需要找 5 元
       if (changes[5] > 0) {
         // 有 5 元零钱
-        changes[5] -= 1;
+        changes[5] -= 1
       } else {
         // 没有零钱
-        return false;
+        return false
       }
     } else if (bill === 20) {
       // 需要找 15 元, 有两种形式: 5 + 5 + 5; 10 + 5
       if (changes[10] > 0) {
-        changes[10] -= 1;
+        changes[10] -= 1
         if (changes[5] >= 1) {
-          changes[5] -= 1;
+          changes[5] -= 1
         } else {
-          return false;
+          return false
         }
       } else {
         if (changes[5] >= 3) {
-          changes[5] -= 3;
+          changes[5] -= 3
         } else {
-          return false;
+          return false
         }
       }
     } else {
-      return false;
+      return false
     }
   }
 
-  return true;
+  return true
 }

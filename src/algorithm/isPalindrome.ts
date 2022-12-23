@@ -35,15 +35,15 @@
  * s 仅由可打印的 ASCII 字符组成
  */
 export function isPalindrome(s: string): boolean {
-  const _s = s.toLowerCase().replace(/[^a-z0-9]/g, "");
-  let left = 0;
-  let right = _s.length - 1;
+  const _s = s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  let left = 0
+  let right = _s.length - 1
   while (left < right) {
     if (_s[left] !== _s[right]) {
-      return false;
+      return false
     }
-    left += 1;
-    right -= 1;
+    left += 1
+    right -= 1
   }
-  return true;
+  return true
 }

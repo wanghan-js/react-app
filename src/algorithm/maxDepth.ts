@@ -19,11 +19,11 @@
  *    15   7
  * 返回它的最大深度 3 。
  */
-import type { TreeNode } from "@/leet-code/treeNode";
+import { TreeNode } from '@/algorithm/treeNode'
 
 export function maxDepth(root: TreeNode | null): number {
   if (!root) {
-    return 0;
+    return 0
   }
-  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 }

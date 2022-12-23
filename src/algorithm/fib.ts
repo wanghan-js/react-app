@@ -30,18 +30,18 @@
  */
 export function fib(n: number): number {
   if (n <= 1) {
-    return n;
+    return n
   }
 
-  let p = 0;
-  let q = 0;
-  let r = 1;
+  let p = 0
+  let q = 0
+  let r = 1
 
   for (let i = 2; i <= n; i++) {
-    p = q;
-    q = r;
-    r = p + q;
+    p = q
+    q = r
+    r = p + q
   }
 
-  return r;
+  return r
 }

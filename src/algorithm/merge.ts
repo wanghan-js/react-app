@@ -47,36 +47,36 @@
 /*
  * Do not return anything, modify nums1 in-place instead.
  */
-function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+export function merge(nums1: number[], m: number, nums2: number[], n: number): void {
   for (let i = nums1.length - 1; i >= 0 && n > 0; i -= 1) {
     if (m > 0 && nums1[m - 1] > nums2[n - 1]) {
-      nums1[i] = nums1[m - 1];
-      nums1[m - 1] = 0;
-      m -= 1;
+      nums1[i] = nums1[m - 1]
+      nums1[m - 1] = 0
+      m -= 1
     } else {
-      nums1[i] = nums2[n - 1];
-      nums2[n - 1] = 0;
-      n -= 1;
+      nums1[i] = nums2[n - 1]
+      nums2[n - 1] = 0
+      n -= 1
     }
   }
 }
 
-function merge(intervals: number[][]): number[][] {
+export function merge2(intervals: number[][]): number[][] {
   // 先对所有区间排序
-  intervals.sort((a, b) => a[0] - b[0]);
+  intervals.sort((a, b) => a[0] - b[0])
 
-  const res = [intervals[0]];
+  const res = [intervals[0]]
   for (let i = 1; i < intervals.length; i++) {
-    const interval = intervals[i];
-    const tail = res[res.length - 1];
+    const interval = intervals[i]
+    const tail = res[res.length - 1]
     if (interval[0] <= tail[1]) {
       // 下一个区间的开头小于等于上一个区间的结尾, 说明它们直接存在交集或者挨在一起, 可以合并
-      tail[1] = Math.max(tail[1], interval[1]);
+      tail[1] = Math.max(tail[1], interval[1])
     } else {
       // 否则不能合并, 直接 push 返回
-      res.push(interval);
+      res.push(interval)
     }
   }
 
-  return res;
+  return res
 }

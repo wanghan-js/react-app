@@ -37,14 +37,50 @@
  *
  * 进阶：你能设计一个在 o(n) 时间内解决此问题的算法吗？
  */
-function minWindow(s: string, t: string): string {
-  function includes(source: string, target: string): boolean {}
-  const left = 0;
-  let right = 0;
-  let target = "";
-  while (right < s.length) {
-    right += 1;
-    target = s.slice(left, right + 1);
+export function minWindow(s: string, t: string): string {
+  let max = ''
+  const window = new Map()
+  const needs = new Map()
+  for (const ch of t) {
+    window.set(ch, 0)
+    needs.set(ch, (needs.get(ch) ?? 0) + 1)
   }
-  return target;
+  let left = 0
+  let right = 0
+  const totalCount = [...needs.keys()].length
+  let validCount = 0
+  while (right < s.length) {
+    const ch = s[right]
+    right++
+    if (needs.get(ch) > 0) {
+      // 匹配到目标字符
+      // 将其加入 window 中
+      window.set(ch, window.get(ch) + 1)
+      if (window.get(ch) === needs.get(ch)) {
+        // 如果已经满足了这个字符的数量, 做下标记
+        validCount++
+      }
+    }
+
+    while (validCount === totalCount) {
+      // 说明找到子串, 需要更新最小子串
+      if (max) {
+        max = max.length >= right - left ? s.slice(left, right) : max
+      } else {
+        max = s.slice(left, right)
+      }
+      // 说明找到子串, 需要往左移动指针, 直到不满足子串的情况
+      const ch = s[left]
+      left++
+      if (needs.get(ch) > 0) {
+        // 更新窗口
+        if (window.get(ch) === needs.get(ch)) {
+          // 说明子串不再满足条件
+          validCount--
+        }
+        window.set(ch, window.get(ch) - 1)
+      }
+    }
+  }
+  return max
 }

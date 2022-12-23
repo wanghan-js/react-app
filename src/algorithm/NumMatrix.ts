@@ -39,17 +39,17 @@
  * 0 <= col1 <= col2 < n
  * 最多调用 104 次 sumRegion 方法
  */
-class NumMatrix {
+export class NumMatrix {
   // 前缀和数组
-  private preSums: number[][];
+  private preSums: number[][]
 
   constructor(private matrix: number[][]) {
-    const row = matrix.length;
-    const col = matrix[0].length;
+    const row = matrix.length
+    const col = matrix[0].length
     // 初始化 preSums 二维数组
-    this.preSums = new Array(row + 1);
+    this.preSums = new Array(row + 1)
     for (let i = 0; i < row + 1; i++) {
-      this.preSums[i] = new Array(col + 1).fill(0);
+      this.preSums[i] = new Array(col + 1).fill(0)
     }
 
     for (let i = 1; i < row + 1; i++) {
@@ -59,7 +59,7 @@ class NumMatrix {
           matrix[i - 1][j - 1] +
           this.preSums[i - 1][j] +
           this.preSums[i][j - 1] -
-          this.preSums[i - 1][j - 1];
+          this.preSums[i - 1][j - 1]
       }
     }
   }
@@ -70,7 +70,7 @@ class NumMatrix {
       this.preSums[row1][col2 + 1] -
       this.preSums[row2 + 1][col1] +
       this.preSums[row1][col1]
-    );
+    )
   }
 }
 

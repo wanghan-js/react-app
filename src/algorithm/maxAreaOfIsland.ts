@@ -31,25 +31,25 @@
  */
 export function maxAreaOfIsland(grid: number[][]): number {
   if (grid.length === 0) {
-    return 0;
+    return 0
   }
 
-  let maxArea = 0;
-  const width = grid[0].length;
-  const height = grid.length;
+  let maxArea = 0
+  const width = grid[0].length
+  const height = grid.length
   // 记录访问过的 cell
-  const visited: number[][] = [];
+  const visited: number[][] = []
 
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
       // 遍历每一个单元格
-      const cell = grid[i][j];
+      const cell = grid[i][j]
       if (cell === 1) {
         // 发现岛屿入口, 使用广度优先搜索 (BFS), 计算岛屿面积
-        const area = bfs(j, i, grid);
+        const area = bfs(j, i, grid)
         // 更新最大岛屿面积
         if (area > maxArea) {
-          maxArea = area;
+          maxArea = area
         }
       }
     }
@@ -57,32 +57,32 @@ export function maxAreaOfIsland(grid: number[][]): number {
 
   function bfs(x: number, y: number, grid: number[][]): number {
     if (visited.find(([x1, y1]) => x1 === x && y1 === y)) {
-      return 0;
+      return 0
     }
-    let area = 1;
-    visited.push([x, y]);
+    let area = 1
+    visited.push([x, y])
     // 上
     if (y - 1 >= 0 && grid[y - 1][x] === 1) {
-      area += bfs(x, y - 1, grid);
+      area += bfs(x, y - 1, grid)
     }
 
     // 右
     if (x + 1 <= width - 1 && grid[y][x + 1] === 1) {
-      area += bfs(x + 1, y, grid);
+      area += bfs(x + 1, y, grid)
     }
 
     // 下
     if (y + 1 <= height - 1 && grid[y + 1][x] === 1) {
-      area += bfs(x, y + 1, grid);
+      area += bfs(x, y + 1, grid)
     }
 
     // 左
     if (x - 1 >= 0 && grid[y][x - 1] === 1) {
-      area += bfs(x - 1, y, grid);
+      area += bfs(x - 1, y, grid)
     }
 
-    return area;
+    return area
   }
 
-  return maxArea;
+  return maxArea
 }

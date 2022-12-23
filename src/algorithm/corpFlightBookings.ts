@@ -44,17 +44,17 @@
  */
 export function corpFlightBookings(bookings: number[][], n: number): number[] {
   // 差分数组
-  const diff: number[] = new Array(n).fill(0);
+  const diff: number[] = new Array(n).fill(0)
   for (let i = 0; i < bookings.length; i++) {
-    const [start, end, inc] = bookings[i];
-    diff[start - 1] += inc;
+    const [start, end, inc] = bookings[i]
+    diff[start - 1] += inc
     if (end < n) {
-      diff[end] -= inc;
+      diff[end] -= inc
     }
   }
-  const res: number[] = [diff[0]];
+  const res: number[] = [diff[0]]
   for (let i = 1; i < n; i++) {
-    res[i] = res[i - 1] + diff[i];
+    res[i] = res[i - 1] + diff[i]
   }
-  return res;
+  return res
 }

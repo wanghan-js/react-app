@@ -25,20 +25,20 @@
  * 输出：false
  */
 export function isRectangleOverlap(rec1: number[], rec2: number[]): boolean {
-  const x1 = rec1[0];
-  const y1 = rec1[1];
-  const x2 = rec1[2];
-  const y2 = rec1[3];
-  const a1 = rec2[0];
-  const b1 = rec2[1];
-  const a2 = rec2[2];
-  const b2 = rec2[3];
+  const x1 = rec1[0]
+  const y1 = rec1[1]
+  const x2 = rec1[2]
+  const y2 = rec1[3]
+  const a1 = rec2[0]
+  const b1 = rec2[1]
+  const a2 = rec2[2]
+  const b2 = rec2[3]
 
   if (x1 === x2 || y1 === y2 || a1 === a2 || b1 === b2) {
     // 这代表 rec1 或者 rec2 不构成矩形, 只是个线段, 无法判断是否重合
-    return false;
+    return false
   }
 
   // rec2 不在 rec1 上下左右的任何一个位置, 则判断有重叠
-  return !(a2 <= x1 || a1 >= x2 || b1 >= y2 || b2 <= y1);
+  return !(a2 <= x1 || a1 >= x2 || b1 >= y2 || b2 <= y1)
 }

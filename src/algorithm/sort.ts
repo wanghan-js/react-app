@@ -182,20 +182,20 @@ export function heapSort(xs: number[]): void {
     heapify(xs, 0, heapSize)
   }
 
-  function heapInsert(xs: number[], index: number): void {
-    let j = index
-    while (j) {
-      // 父节点的下标
-      const k = Math.floor((j - 1) / 2)
-      if (xs[j] > xs[k]) {
-        // 比父大就交换位置
-        swap(xs, j, k)
-        j = k
-      } else {
-        break
-      }
-    }
-  }
+  // function heapInsert(xs: number[], index: number): void {
+  //   let j = index
+  //   while (j) {
+  //     // 父节点的下标
+  //     const k = Math.floor((j - 1) / 2)
+  //     if (xs[j] > xs[k]) {
+  //       // 比父大就交换位置
+  //       swap(xs, j, k)
+  //       j = k
+  //     } else {
+  //       break
+  //     }
+  //   }
+  // }
 
   function heapify(xs: number[], index: number, heapSize: number): void {
     let i = index
