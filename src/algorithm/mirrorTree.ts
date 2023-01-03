@@ -49,8 +49,7 @@ export function mirrorTree(root: TreeNode | null): TreeNode | null {
     return null
   }
   const left = mirrorTree(root.left)
-  const right = mirrorTree(root.right)
-  root.left = right
+  root.left = mirrorTree(root.right)
   root.right = left
   return root
 }

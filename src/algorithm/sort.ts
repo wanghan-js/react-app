@@ -1,3 +1,5 @@
+import { getRandomInt, swap } from '@/algorithm/utils'
+
 /**
  * 各种排序算法
  * 排序算法总结:
@@ -215,14 +217,4 @@ export function heapSort(xs: number[]): void {
       }
     }
   }
-}
-
-// 交换数组中元素的位置
-function swap(xs: number[], i: number, j: number): void {
-  ;[xs[i], xs[j]] = [xs[j], xs[i]]
-}
-
-// 获取一个随机数: [min, max)
-export function getRandomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min) + min)
 }
