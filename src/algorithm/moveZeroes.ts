@@ -46,9 +46,10 @@ export function moveZeroes(nums: number[]): void {
       // 跳过后面的 0
       continue
     }
-    // 交换 0 和非 0
+    // 交换首个 0 和首个非 0 的值
     nums[p] = nums[q]
     nums[q] = 0
+    // 这里 p 自增 1 后, 它指向的还是首个 0
     p += 1
   }
 }
